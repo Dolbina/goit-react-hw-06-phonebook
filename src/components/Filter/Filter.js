@@ -1,7 +1,12 @@
-import { PropTypes } from "prop-types";
 import { FilterWrap } from './Filter.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { filtersContact } from 'redux/filtersSlice';
+import { getFilter } from 'redux/selector';
 
-export const Filter = ({ filter, onChange }) => {
+
+export const Filter = () => {
+  const dispatch = useDispatch();
+  const filter = useSelector(getFilter);
     return (
       <FilterWrap>
         <label> Find contacts by name</label>
@@ -9,14 +14,10 @@ export const Filter = ({ filter, onChange }) => {
           type="text"
           name="filter"
           value={filter}
-          onChange={onChange}
+          onChange={event=> dispatch(filtersContact(event.target.value.trim()))}
           placeholder="search"
         />
       </FilterWrap>
     );
 };
 
-Filter.propTypes = {
-    filter: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-};

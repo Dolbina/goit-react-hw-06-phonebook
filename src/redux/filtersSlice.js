@@ -5,20 +5,12 @@ const filtersSlice = createSlice({
   name: 'filter',
     initialState: initialFilter,
     reducers: {
-        filtersContact(state, action){
-            state.initialFilter = action.payload;
-            },
+        filtersContact:(state, action)=>{
+        return action.payload;
+                          },
                             },
                 });
 
-
-//  const onChangeInput = event => {
-//    setFilter(event.target.value.toLocaleLowerCase());
-//  };
-
-//  const filterContacts = () => {
-//     return contacts.filter(contact => contact.name.toLowerCase().includes(filter));
-// };
-  
-// export const { addContact } = filtersSlice.actions;
+ 
+export const { filtersContact } = filtersSlice.actions;
 export const filtersReducer = filtersSlice.reducer;
